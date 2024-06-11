@@ -30,30 +30,15 @@ public class PartnerController {
     @Autowired
     private PartnerTypeCatalogService partnerTypeCatalogService;
 
-    @GetMapping("/registroSocio")
+    @GetMapping("/empresa/registroSocio")
     public String showRegistrationForm(Model model) {
         model.addAttribute("partner", new Partner());
         return "registroSocio";
     }
 
-//    @PostMapping("/registerPartner")
-//    public String registerPartner(@ModelAttribute("partner") Partner partner,
-//                                  @RequestParam("image") MultipartFile image) throws IOException {
-//        // Obtiene el usuario que ha iniciado sesión
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        String loggedInUsername = auth.getName();
-//
-//        // Busca el usuario por nombre de usuario
-//        User loggedInUser = userService.findByEmail(loggedInUsername);
-//
-//        // Guarda el socio en la base de datos a través del servicio
-//        partnerService.savePartner(partner, loggedInUser,image);
-//
-//        return "redirect:/partner/registerPartner";
-//    }
 
 
-    @PostMapping("/registroSocio")
+    @PostMapping("/empresa/registroSocio")
     public String registerPartner(@ModelAttribute("partner") Partner partner,
                                   @RequestParam("image") MultipartFile image,
                                   @RequestParam("serviceNames") String[] serviceNames,
@@ -66,7 +51,7 @@ public class PartnerController {
         // Busca el usuario por email
         User loggedInUser = userService.findByEmail(loggedInUsername);
 
-        // Guardar el socio en la base de datos a través del servicio
+        // Guarda el socio en la base de datos a través del servicio
         boolean registrationSuccess = partnerService.savePartner(partner, loggedInUser, image);
 
         // Si el socio se registró exitosamente
@@ -100,27 +85,27 @@ public class PartnerController {
 //        }
 
 
-        return "redirect:/registroSocio";
+        return "redirect:/empresa/registroSocio";
 
     }
 
 
 
 
-    @GetMapping("/miEmpresa")
+    @GetMapping("/empresa/miEmpresa")
     public String showUserPartners(Model model) {
-        // Obtener el usuario que ha iniciado sesión
+        // Obtiene el usuario que ha iniciado sesión
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String loggedInUsername = auth.getName();
         User loggedInUser = userService.findByEmail(loggedInUsername);
 
-        // Obtener el socio asociado al usuario
+        // Obtiene el socio asociado al usuario
         List<PartnerDTO> partners = partnerService.findPartnersByUserId(loggedInUser.getId());
 
-        // Pasar el socio a la vista
+        // Pasa el socio a la vista
         model.addAttribute("partners", partners);
 
-        return "my-partner";
+        return "my_partner";
     }
 
 

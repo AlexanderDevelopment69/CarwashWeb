@@ -16,18 +16,8 @@ public class HomeController {
     @Autowired
     private PartnerService partnerService;
 
-    @Autowired
-    private UserService userService;
 
 
-
-//    @GetMapping("/home")
-//    public String home(Model model) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        boolean loggedIn = authentication.isAuthenticated();
-//        model.addAttribute("loggedIn", loggedIn);
-//        return "home";
-//    }
 
 
     @GetMapping("/home")
@@ -50,5 +40,12 @@ public class HomeController {
         return "home";
     }
 
+
+
+
+    @GetMapping("/")
+    public String index(Model model) {
+        return "redirect:/home"; // Redirige a /home
+    }
 
 }

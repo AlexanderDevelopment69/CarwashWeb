@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/register", "/login", "/home", "/css/**", "/js/**", "/images/**").permitAll()
+                .antMatchers("/register", "/login", "/","/home", "/css/**", "/js/**", "/images/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN") // Requiere el rol ROLE_ADMIN para acceder a URLs que comienzan con /admin
                 .antMatchers("/user/**").hasAnyRole("USER", "ADMIN") // Requiere el rol ROLE_USER o ROLE_ADMIN para acceder a URLs que comienzan con /user
                 .anyRequest().authenticated() // Todas las demás URL requieren autenticación

@@ -17,7 +17,7 @@ public class UserController {
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
-        return "register";
+        return "registro_usuario";
     }
 
     @PostMapping("/register")
@@ -43,36 +43,10 @@ public class UserController {
         return "login"; // Devuelve la vista login.html
     }
 
-//    // Procesa el formulario de inicio de sesión
-//    @PostMapping("/login")
-//    public String login(@RequestParam("email") String email, @RequestParam("password") String password) {
-//        // Obtener el usuario autenticado
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//
-//        // Obtener el nombre de usuario
-//        String username = auth.getName();
-//
-//        // Obtener los roles del usuario
-//        Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
-//
-//        // Verificar si el usuario está autenticado
-//        boolean isAuthenticated = auth.isAuthenticated();
-//
-//        // Realizar acciones adicionales según la información de autenticación
-//
-//        // Redirigir al usuario a la página de inicio o a cualquier otra página relevante
-//        return "redirect:/home";
-//    }
 
 
 
 
-    // Muestra la página de inicio (home.html)
-    @RequestMapping({"/", "/home"})
-    public String home(Model model) {
-        // Aquí puedes agregar lógica para cargar datos relacionados con la página de inicio
-        return "home"; // Devuelve la vista home.html
-    }
 
 
 }

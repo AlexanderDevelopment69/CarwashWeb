@@ -22,16 +22,14 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public User registerUser(User user) {
-        // Codificar la contraseña
+        // Codifica la contraseña
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-        // Obtener el rol predeterminado desde la base de datos (por ejemplo, ROLE_USER)
+        // Obtiene el rol predeterminado desde la base de datos (por ejemplo, ROLE_USER)
         Role defaultRole = roleRepository.findByName("ROLE_USER");
         if (defaultRole == null) {
             throw new RuntimeException("No se encontró el rol predeterminado");
         }
-
-        // Asignar el rol al usuario
+        // Asigna el rol al usuario
         user.setRoles(Collections.singleton(defaultRole));
 
         return userRepository.save(user);
@@ -47,6 +45,7 @@ public class UserService {
 //        user.setRoles(Collections.singleton(userRole));
 //        return userRepository.save(user);
 //    }
+
 }
 
 

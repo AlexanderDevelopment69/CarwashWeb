@@ -9,10 +9,6 @@ import pe.edu.utp.proyectocarwash.entities.User;
 import java.util.List;
 
 public interface PartnerRepository extends JpaRepository<Partner, Long> {
-
-
     List<Partner> findPartnersByOwnerId(Long userId);
-
-
 
 }

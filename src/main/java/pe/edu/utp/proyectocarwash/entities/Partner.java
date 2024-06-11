@@ -5,11 +5,14 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Data
-@EqualsAndHashCode(exclude = {"services"}) // Exclue la relación bidireccional en el cálculo de hashCode y equals
+@EqualsAndHashCode(exclude = {"services", "owner"}) // Excluye la relación bidireccional en el cálculo de hashCode y equals
 @ToString(exclude = {"services"})
 public class Partner {
     @Id
@@ -24,8 +27,6 @@ public class Partner {
     @Column(nullable = false)
     private String description;
 
-    private int rating;
-
     @Lob
     private byte[] imagen;
 
@@ -33,16 +34,23 @@ public class Partner {
     private boolean isActive;
 
     // Relación uno a uno con User
-    @OneToOne
+//    @OneToOne
+//    @JoinColumn(name = "user_id")
+//    private User owner;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User owner;
 
-    // Relación uno a muchos con PartnerService
-//    @OneToMany(mappedBy = "partner", cascade = CascadeType.ALL)
-//    private Set<PartnerTypeCatalog> services;
+
 
     @OneToMany(mappedBy = "partner", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<PartnerTypeCatalog> services;
+
+
+    @OneToMany(mappedBy = "partner", cascade = CascadeType.ALL,fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Rating> ratings = new ArrayList<>();
+
 
 
 

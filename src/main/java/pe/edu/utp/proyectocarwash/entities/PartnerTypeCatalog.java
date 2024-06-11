@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@EqualsAndHashCode(exclude = {"partner"}) // Excluie la relación bidireccional en el cálculo de hashCode y equals
+@EqualsAndHashCode(exclude = {"partner"}) // Excluye la relación bidireccional en el cálculo de hashCode y equals
 @ToString(exclude = {"partner"})
 public class PartnerTypeCatalog {
     @Id
@@ -15,6 +15,7 @@ public class PartnerTypeCatalog {
     private Long id;
 
     private String serviceName;
+
     private double price;
 
     // Relación muchos a uno con Partner

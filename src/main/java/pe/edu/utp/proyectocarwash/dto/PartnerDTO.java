@@ -1,8 +1,10 @@
+
+
 package pe.edu.utp.proyectocarwash.dto;
 
 import lombok.Data;
 
-import java.util.Set;
+import java.util.List;
 
 @Data
 public class PartnerDTO {
@@ -11,10 +13,13 @@ public class PartnerDTO {
     private String phoneNumber;
     private String address;
     private String description;
-    private int rating;
+    private double rating;
     private String imagen;
     private String base64Image;
     private boolean isActive;
-    private Set<PartnerTypeCatalogDTO> services;
+    private List<PartnerTypeCatalogDTO> services; // Lista de servicios
+    private List<RatingDTO> ratings; // Lista de calificaciones
+    private double averageRating;
 
 }
+

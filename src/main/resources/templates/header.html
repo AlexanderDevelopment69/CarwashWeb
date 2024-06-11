@@ -42,8 +42,17 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" th:href="@{/registroSocio}">Registrar mi empresa</a></li>
-                            <li><a class="dropdown-item" th:href="@{/miEmpresa}">Ver mi empresa</a></li>
+                            <li>
+                                <span class="dropdown-header">Gestión Empresa</span>
+                            </li>
+                            <li><a class="dropdown-item" th:href="@{/empresa/registroSocio}">Registrar mi empresa</a></li>
+                            <li><a class="dropdown-item" th:href="@{/empresa/miEmpresa}">Ver mi empresa</a></li>
+                            <li><a class="dropdown-item" th:href="@{/empresa/atenderReservacion}">Atender reservaciones</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <span class="dropdown-header">Gestión Usuario</span>
+                            </li>
+                            <li><a class="dropdown-item" th:href="@{/misReservaciones}">Ver mis reservas</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" th:href="@{/logout}">Cerrar sesión</a></li>
                         </ul>
